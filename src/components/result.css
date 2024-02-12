@@ -1,0 +1,49 @@
+.result {
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  width: 85%;
+  margin: 3% auto;
+}
+
+.resultTitle {
+  font-family: 'Cinzel', cursive;
+  padding: 2%;
+  margin: 0;
+  color: #ccc;
+}
+
+.popLab {
+  padding-left: 2%;
+  margin: 0;
+  margin-bottom: 9px;
+  padding-bottom: 5px;
+  color: #ccc;
+  border-bottom: 1px dotted #ccc;
+}
+
+.popDes,
+.typesList,
+.gScore {
+  padding: 3% 6%;
+  margin: 0;
+  color: #ccc;
+  text-align: center;
+  
+}
+
+.popBlock {
+  background-color: #666; 
+  border-top: 1px solid #ccc;
+  padding-top: 10px;
+  padding-bottom: 5px;
+}
+
+.bright {
+  font-size: 1.25rem;
+  color: #eee;
+}
+
+p {
+  font-family: 'Roboto', sans-serif;
+  
+}

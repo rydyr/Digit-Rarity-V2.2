@@ -1,0 +1,51 @@
+main,
+html{
+  background-color: #555;
+  width: 370px;
+  margin: 0 auto;
+}
+
+main {
+ display: flex;
+ flex-direction: column;
+}
+
+.subTitle {
+  display: flex;
+  flex-direction: row;
+  margin-top: -17px;
+  width: 320px;
+  
+}
+
+h1 {
+  font-family: 'Ephesis', cursive;
+  color: #000;
+  font-size: 4.5rem;
+  margin-bottom: 0;
+  margin-top: 5px;
+  padding-bottom: 0;
+  align-self: center;
+  z-index: 4;
+}
+
+.enter {
+  display: inline;
+  position: relative;
+  font-size: .75rem;
+  top: -22px;
+  left: 2px;
+  color: aqua;
+  z-index: 5;
+  
+}
+
+.version {
+  position: relative;
+  display: inline;
+  margin-top: -28px;
+  left: 225px;
+  color: white;
+  top: 12px;
+  z-index: 5;
+}
