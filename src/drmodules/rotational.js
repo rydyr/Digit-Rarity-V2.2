@@ -16,13 +16,13 @@ function RotationChecker(num,arr,func) {
      }
   const final = result.every(value => value);
   if (num.length % 2 !== 0 && func === DRM.PerHelper) {
-     if (final && num[div] == 0 || final && num[div] == 8) {
+     if ((final && num[div] == 0) || (final && num[div] == 8)) {
         return true;
      }else {
         return false;
      } 
   } else if(num.length % 2 !== 0 && func === DRM.StrHelper) {
-    if (final && num[div] == 0 || final && num[div] == 1 || final && num[div] == 8) {
+    if ((final && num[div] == 0) || (final && num[div] == 1) || (final && num[div] == 8)) {
        return true;
     } else {
       return false;

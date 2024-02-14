@@ -1,0 +1,1 @@
+import Has69 from "../src/drmodules/sixtynine";
