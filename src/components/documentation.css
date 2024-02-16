@@ -5,3 +5,9 @@
     background-color: azure;
     padding: 7%;
 }
+
+img {
+    max-width: 450px;
+    height: auto;
+}
+
