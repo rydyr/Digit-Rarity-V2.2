@@ -1,11 +1,22 @@
-import React from "react";
+import React, { useEffect,useState } from "react";
 import './documentation.css';
 
 function Documentation({ onClose }) {
     console.log(onClose)
+    const [buttonTop, setButtonTop] = useState(20);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const newTop = Math.max(20,window.scrollY + 20);
+            setButtonTop(newTop);
+        }
+
+        window.addEventListener('scroll',handleScroll);
+        return () => window.removeEventListener('scroll',handleScroll);
+    },[]);
     return(
         <div className="doc-body">
-            <button className="closeButton" onClick={onClose}>X</button>
+            <button className="closeButton" onClick={onClose} style={{top: `${buttonTop}px`}}>X</button>
             <h1>Digit Rarity</h1>
             <p>Making number comparisions quick and easy</p>
             <p>Enter a number between 3 and 8 digits length and click "Prove Your Rarity"</p>
@@ -34,7 +45,7 @@ function Documentation({ onClose }) {
             <img src="/images/drex6.jpg" alt="image6" />
             <h3>Length</h3>
             <p>This shows the length and length population</p>
-            <img src="/images/drex7" alt="image7" />
+            <img src="/images/drex7.jpg" alt="image7" />
             <h3>Types</h3>
             <p>Each type bar provides more information about each type including population by length, total population, and a description of the type.</p>
             <p>Types (so far):</p>

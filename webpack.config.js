@@ -2,6 +2,7 @@ import path from 'path';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
+import CopyPlugin from 'copy-webpack-plugin';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -20,7 +21,12 @@ export default {
     plugins:[
         new HtmlWebpackPlugin({
             template: './public/index.html'
-        })
+        }),
+        new CopyPlugin({
+            patterns: [
+                {from: 'public/images', to: 'images'},
+            ],
+        }),
     ],
     module: {
         rules: [

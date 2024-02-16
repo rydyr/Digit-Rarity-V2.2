@@ -38,7 +38,7 @@ function Menu() {
         <a className="menuItemDisabled">About</a>
         <br></br>
         <p></p>
-        <a className="menuItem" onClick={toggleDoc}>Docs</a>
+        <a id="docsLink" className="menuItem" onClick={toggleDoc}>Docs</a>
       </div>
     </div>
   )

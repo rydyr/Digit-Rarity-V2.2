@@ -1,13 +1,27 @@
 .doc-body {
     position: relative;
-    width: 100vw;
+    display: inline-block;
+    width: 95vw;
     max-width: 600px;
     background-color: azure;
     padding: 7%;
 }
 
+
+
 img {
+    width: 80vw;
     max-width: 450px;
     height: auto;
 }
 
+.closeButton {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: aqua;
+    background-color: black;
+    padding: 10px;
+    z-index: 10;
+    cursor: pointer;
+  }
