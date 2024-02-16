@@ -1,0 +1,7 @@
+.doc-body {
+    position: relative;
+    width: 100vw;
+    max-width: 600px;
+    background-color: azure;
+    padding: 7%;
+}

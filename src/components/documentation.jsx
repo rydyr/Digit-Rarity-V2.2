@@ -1,20 +1,23 @@
 import React from "react";
+import './documentation.css';
 
-function Documentation() {
+function Documentation({ onClose }) {
+    console.log(onClose)
     return(
         <div className="doc-body">
+            <button className="closeButton" onClick={onClose}>X</button>
             <h1>Digit Rarity</h1>
             <p>Making number comparisions quick and easy</p>
             <p>Enter a number between 3 and 8 digits length and click "Prove Your Rarity"</p>
-            <img src="../public/images/drex1.jpg" alt="image1" />
+            <img src="/src/images/drex1.jpg" alt="image1" />
             <p>Based on the result of your search you will see a series of accordian bars</p>
-            <img src="../public/images/drex2.jpg" alt="image2" />
+            <img src="../images/drex2.jpg" alt="image2" />
             <h3>Score</h3>
             <p>The first thing you'll notice is a rarity score</p>
-            <img src="../public/images/drex3.jpg" alt="image3" />
+            <img src="../images/drex3.jpg" alt="image3" />
             <p>This first score is based on type and length. Rarity scores represent relative frequency where a score of 0 is least rare and 8 is most rare.</p>
             <p>The following population is the total population for the specific type combination across all lengths.</p>
-            <img src="../public/images/drex4.jpg" alt="image4" />
+            <img src="../images/drex4.jpg" alt="image4" />
             <p>Total population for all digits is determined as follows:</p>
             <ol start="3">
                 <li>000-999 = 1,000</li>
@@ -26,12 +29,12 @@ function Documentation() {
                 <p>Total = 111,111,000</p>
             </ol>
             <p>Type Score is the rarity score for the specific type combination across all lengths</p>
-            <img src="../public/images/drex5.jpg" alt="image5" />
+            <img src="../images/drex5.jpg" alt="image5" />
             <p>There are currently 11 types that Digit Rarity identifies. We'll cover those more below</p>
-            <img src="../public/images/drex6.jpg" alt="image6" />
+            <img src="../images/drex6.jpg" alt="image6" />
             <h3>Length</h3>
             <p>This shows the length and length population</p>
-            <img src="../public/images/drex7" alt="image7" />
+            <img src="../images/drex7" alt="image7" />
             <h3>Types</h3>
             <p>Each type bar provides more information about each type including population by length, total population, and a description of the type.</p>
             <p>Types (so far):</p>
