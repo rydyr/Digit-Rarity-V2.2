@@ -19,6 +19,7 @@ function Documentation({ onClose }) {
             <button className="closeButton" onClick={onClose} style={{top: `${buttonTop}px`}}>X</button>
             <h1>Digit Rarity</h1>
             <p>Making number comparisions quick and easy</p>
+            <hr />
             <p>Enter a number between 3 and 8 digits length and click "Prove Your Rarity"</p>
             <img src="/images/drex1.jpg" alt="image1" />
             <p>Based on the result of your search you will see a series of accordian bars</p>
