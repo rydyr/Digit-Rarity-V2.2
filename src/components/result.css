@@ -3,6 +3,7 @@
   border-radius: 5px;
   width: 85%;
   margin: 3% auto;
+  cursor: pointer;
 }
 
 .resultTitle {
