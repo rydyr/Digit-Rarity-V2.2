@@ -3,13 +3,15 @@ import React, { useState,useEffect } from "react";
 import Input from "./components/input.jsx";
 import MyButton from "./components/button.jsx";
 import Result from "./components/result.jsx";
+import Menu from "./components/menu.jsx";
 import score from "./dataobjects/score.js";
 import wordifyNum from "./dataobjects/switch.js";
+import { resolveEnsAddress } from './drmodules/owner.js';
 import "./components/input.css";
 import "./components/button.css";
 import "./components/result.css";
 import "./App.css";
-import Menu from "./components/menu.jsx";
+
 
 export default function App() {
   const rotArr = [0, 1, 6, 8, 9];
@@ -103,6 +105,7 @@ useEffect(() => {
 
 function calcAll() {
   calculateResults();
+  resolveEnsAddress(input);
 }
 
   return (
