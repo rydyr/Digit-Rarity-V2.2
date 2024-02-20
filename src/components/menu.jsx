@@ -38,7 +38,13 @@ function Menu() {
         <a className="menuItemDisabled">About</a>
         <br></br>
         <p></p>
+        <a className='menuItemDisabled'>Favorites</a>
+        <br></br>
+        <p></p>
         <a id="docsLink" className="menuItem" onClick={toggleDoc}>Docs</a>
+        <br></br>
+        <p></p>
+        <a className='menuItemDisabled'>Stats</a>
       </div>
     </div>
   )

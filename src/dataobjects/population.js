@@ -1,7 +1,7 @@
 const population = {
   scorecard: {
     label: "Score",
-    description: "The score card features (in order) Rarity Score by length and type, type population, Rarity Score by type, and type list."
+    description: "Score is based on relative frequency where 0 is least rare and 8 is most rare."
   },
   Length: {
     label: "Length",
