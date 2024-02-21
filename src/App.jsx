@@ -6,7 +6,7 @@ import Result from "./components/result.jsx";
 import Menu from "./components/menu.jsx";
 import score from "./dataobjects/score.js";
 import wordifyNum from "./dataobjects/switch.js";
-import { resolveEnsAddress } from './drmodules/owner.js';
+import findEnsOwner from './drmodules/owner.js';
 import "./components/input.css";
 import "./components/button.css";
 import "./components/result.css";
@@ -105,7 +105,7 @@ useEffect(() => {
 
 function calcAll() {
   calculateResults();
-  resolveEnsAddress(input);
+  findEnsOwner(input);
 }
 
   return (

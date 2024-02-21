@@ -1,14 +1,26 @@
-import { getEnsAddress } from '@wagmi/core';
-import { config } from '/wagmi.config.js';
+import { resolveEnsAddress } from "./ensAddress.js";
+import { resolveEnsName } from "./resAddress.js";
 
-
-export async function resolveEnsAddress(input) {
-    try {
-        const ensAddress = await getEnsAddress(config, {
-            name: `${input}.eth`,
+function findEnsOwner(input){
+    resolveEnsAddress(input)
+    .then(hexAddress => {
+        if(!hexAddress) {
+            console.log('No Address found');
+            return null;
+        }
+        return resolveEnsName(hexAddress).then(resolvedName => {
+            if(resolvedName){
+                console.log(`name resolves to: ${resolvedName}`);
+                return resolvedName;
+            } else {
+                console.log(`address not resolved, returning hex: ${hexAddress}`);
+                return hexAddress;
+            }
         });
-        console.log(ensAddress);
-    } catch (error) {
-        console.error('Error resolving ENS address:', error);
-    }
-}
+    })
+    .catch(error => {
+        console.error('Error while finding resolver',error);
+    })
+};
+
+export default findEnsOwner;
