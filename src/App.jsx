@@ -4,6 +4,7 @@ import Input from "./components/input.jsx";
 import MyButton from "./components/button.jsx";
 import Result from "./components/result.jsx";
 import Menu from "./components/menu.jsx";
+import OwnerIs from './components/owner.jsx';
 import score from "./dataobjects/score.js";
 import wordifyNum from "./dataobjects/switch.js";
 import findEnsOwner from './drmodules/owner.js';
@@ -120,12 +121,8 @@ async function calcAll() {
         <h3 className="version">V.2</h3>
       </div>
       <Input value={input} onChange={handleChange} />
+      <OwnerIs owner={owner} />
       <MyButton className="myButton" onCalculate={calcAll} isValid={input.length >= 3 && input.length <= 8}/>
-      {owner && (
-        <div className='ownerInfo'>
-          Owner: {owner}
-        </div>
-      )}
       <Result
         type="scorecard"
         isTrue={finalScore}
