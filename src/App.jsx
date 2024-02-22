@@ -21,6 +21,7 @@ export default function App() {
   const [typeScore, setTypeScore] = useState(0);
   const [typeList, setTypeList] = useState("");
   const [typePop, setTypePop] = useState("");
+  const [owner, setOwner] = useState(null);
   const [result, setResult] = useState({
     length: 0,
     palindrome: false,
@@ -103,9 +104,11 @@ useEffect(() => {
   calculateScore(result);
 }, [result]);
 
-function calcAll() {
+
+async function calcAll() {
   calculateResults();
-  findEnsOwner(input);
+  const owner = await findEnsOwner(input);
+  setOwner(owner);
 }
 
   return (
@@ -118,7 +121,11 @@ function calcAll() {
       </div>
       <Input value={input} onChange={handleChange} />
       <MyButton className="myButton" onCalculate={calcAll} isValid={input.length >= 3 && input.length <= 8}/>
-      
+      {owner && (
+        <div className='ownerInfo'>
+          Owner: {owner}
+        </div>
+      )}
       <Result
         type="scorecard"
         isTrue={finalScore}

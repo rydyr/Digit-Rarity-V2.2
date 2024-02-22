@@ -1,7 +1,7 @@
-import { resolveEnsAddress } from "./ensAddress.js";
-import { resolveEnsName } from "./resAddress.js";
+import resolveEnsAddress from "./ensAddress.js";
+import resolveEnsName from "./resAddress.js";
 
-function findEnsOwner(input){
+export default function findEnsOwner(input){
     resolveEnsAddress(input)
     .then(hexAddress => {
         if(!hexAddress) {
@@ -23,4 +23,4 @@ function findEnsOwner(input){
     })
 };
 
-export default findEnsOwner;
+

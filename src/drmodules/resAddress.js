@@ -1,7 +1,7 @@
 import { getEnsName } from '@wagmi/core';
 import { config } from '/wagmi.config.js';
 
-export async function resolveEnsName(address) {
+export default async function resolveEnsName(address) {
     //  console.log(address);
       try {
           const ensName = await getEnsName(config, {
