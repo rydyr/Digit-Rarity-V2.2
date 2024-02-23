@@ -4,10 +4,8 @@ import Input from "./components/input.jsx";
 import MyButton from "./components/button.jsx";
 import Result from "./components/result.jsx";
 import Menu from "./components/menu.jsx";
-import OwnerIs from './components/towner.jsx';
 import score from "./dataobjects/score.js";
 import wordifyNum from "./dataobjects/switch.js";
-import findEnsOwner from "./drmodules/owner.js";
 import "./components/input.css";
 import "./components/button.css";
 import "./components/result.css";
@@ -22,9 +20,7 @@ export default function App() {
   const [typeScore, setTypeScore] = useState(0);
   const [typeList, setTypeList] = useState("");
   const [typePop, setTypePop] = useState("");
- // const [owner, setOwner] = useState(null);
   const [result, setResult] = useState({
-    owner: null,
     length: 0,
     palindrome: false,
     ambigram: false,
@@ -87,7 +83,6 @@ export default function App() {
   const calculateResults = () => {
     const num = Number(input);
     setResult({
-      owner: findEnsOwner(input),
       length: input.length,
       palindrome: DRM.Palindrome(input),
       ambigram: DRM.RotationChecker(input, rotArr, DRM.AmbHelper),
@@ -109,7 +104,6 @@ useEffect(() => {
 
 function calcAll() {
   calculateResults();
-  console.log(result.owner)
 }
 
   return (
@@ -120,8 +114,7 @@ function calcAll() {
         <h3 className="enter">Enter Your Digit</h3>
         <h3 className="version">V.2</h3>
       </div>
-      <Input value={input} onChange={handleChange} />
-      <OwnerIs owner={result.owner} /> 
+      <Input value={input} onChange={handleChange} /> 
       <MyButton className="myButton" onCalculate={calcAll} isValid={input.length >= 3 && input.length <= 8}/>
       <Result
         type="scorecard"
