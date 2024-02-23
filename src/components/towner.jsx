@@ -1,7 +1,8 @@
 import React from "react";
 import './owner.css';
 
-const OwnerIs = ({owner}) => {
+
+export default function OwnerIs({owner}){
     if(!owner) return null;
     return (
         <div className="ownerInfo">
@@ -10,4 +11,3 @@ const OwnerIs = ({owner}) => {
     )
 }
 
-export default OwnerIs;

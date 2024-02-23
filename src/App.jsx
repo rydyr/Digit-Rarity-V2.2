@@ -4,10 +4,10 @@ import Input from "./components/input.jsx";
 import MyButton from "./components/button.jsx";
 import Result from "./components/result.jsx";
 import Menu from "./components/menu.jsx";
-import OwnerIs from './components/owner.jsx';
+import OwnerIs from './components/towner.jsx';
 import score from "./dataobjects/score.js";
 import wordifyNum from "./dataobjects/switch.js";
-import findEnsOwner from './drmodules/owner.js';
+import findEnsOwner from "./drmodules/owner.js";
 import "./components/input.css";
 import "./components/button.css";
 import "./components/result.css";
@@ -22,8 +22,9 @@ export default function App() {
   const [typeScore, setTypeScore] = useState(0);
   const [typeList, setTypeList] = useState("");
   const [typePop, setTypePop] = useState("");
-  const [owner, setOwner] = useState(null);
+ // const [owner, setOwner] = useState(null);
   const [result, setResult] = useState({
+    owner: null,
     length: 0,
     palindrome: false,
     ambigram: false,
@@ -86,6 +87,7 @@ export default function App() {
   const calculateResults = () => {
     const num = Number(input);
     setResult({
+      owner: findEnsOwner(input),
       length: input.length,
       palindrome: DRM.Palindrome(input),
       ambigram: DRM.RotationChecker(input, rotArr, DRM.AmbHelper),
@@ -105,11 +107,9 @@ useEffect(() => {
   calculateScore(result);
 }, [result]);
 
-
-async function calcAll() {
+function calcAll() {
   calculateResults();
-  const owner = await findEnsOwner(input);
-  setOwner(owner);
+  console.log(result.owner)
 }
 
   return (
@@ -121,7 +121,7 @@ async function calcAll() {
         <h3 className="version">V.2</h3>
       </div>
       <Input value={input} onChange={handleChange} />
-      <OwnerIs owner={owner} />
+      <OwnerIs owner={result.owner} /> 
       <MyButton className="myButton" onCalculate={calcAll} isValid={input.length >= 3 && input.length <= 8}/>
       <Result
         type="scorecard"
