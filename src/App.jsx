@@ -6,6 +6,7 @@ import Result from "./components/result.jsx";
 import Menu from "./components/menu.jsx";
 import score from "./dataobjects/score.js";
 import wordifyNum from "./dataobjects/switch.js";
+import findEnsOwner from './drmodules/owner.js';
 import "./components/input.css";
 import "./components/button.css";
 import "./components/result.css";
@@ -16,11 +17,13 @@ export default function App() {
   const rotArr = [0, 1, 6, 8, 9];
   const perArr = [0, 6, 8, 9];
   const [input, setInput] = useState("");
+  //const [owner, setOwner] = useState("");
   const [finalScore, setFinalScore] = useState(0);
   const [typeScore, setTypeScore] = useState(0);
   const [typeList, setTypeList] = useState("");
   const [typePop, setTypePop] = useState("");
   const [result, setResult] = useState({
+    owner: null,
     length: 0,
     palindrome: false,
     ambigram: false,
@@ -80,9 +83,11 @@ export default function App() {
 
   
 
-  const calculateResults = () => {
+  const calculateResults = async () => {
     const num = Number(input);
+    const owner = await findEnsOwner(input);
     setResult({
+      owner: owner,
       length: input.length,
       palindrome: DRM.Palindrome(input),
       ambigram: DRM.RotationChecker(input, rotArr, DRM.AmbHelper),
@@ -102,9 +107,16 @@ useEffect(() => {
   calculateScore(result);
 }, [result]);
 
-function calcAll() {
-  calculateResults();
+
+
+async function calcAll() {
+  calculateResults()
+  setTimeout(()=> {
+    console.log(result)
+  },3000)
 }
+
+
 
   return (
     <main>
