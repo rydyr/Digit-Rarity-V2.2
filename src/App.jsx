@@ -4,6 +4,7 @@ import Input from "./components/input.jsx";
 import MyButton from "./components/button.jsx";
 import Result from "./components/result.jsx";
 import Menu from "./components/menu.jsx";
+import Owner from './components/owner.jsx';
 import score from "./dataobjects/score.js";
 import wordifyNum from "./dataobjects/switch.js";
 import findEnsOwner from './drmodules/owner.js';
@@ -17,13 +18,13 @@ export default function App() {
   const rotArr = [0, 1, 6, 8, 9];
   const perArr = [0, 6, 8, 9];
   const [input, setInput] = useState("");
-  //const [owner, setOwner] = useState("");
+  const [owner, setOwner] = useState("");
   const [finalScore, setFinalScore] = useState(0);
   const [typeScore, setTypeScore] = useState(0);
   const [typeList, setTypeList] = useState("");
   const [typePop, setTypePop] = useState("");
   const [result, setResult] = useState({
-    owner: null,
+   // owner: undefined,
     length: 0,
     palindrome: false,
     ambigram: false,
@@ -85,9 +86,9 @@ export default function App() {
 
   const calculateResults = async () => {
     const num = Number(input);
-    const owner = await findEnsOwner(input);
+   // const owner = await findEnsOwner(input);
     setResult({
-      owner: owner,
+      //owner: owner,
       length: input.length,
       palindrome: DRM.Palindrome(input),
       ambigram: DRM.RotationChecker(input, rotArr, DRM.AmbHelper),
@@ -111,11 +112,14 @@ useEffect(() => {
 
 async function calcAll() {
   calculateResults()
-  setTimeout(()=> {
-    console.log(result)
-  },3000)
+  await findEnsOwner(input).then(owner => {
+    setOwner(owner)
+  })
 }
 
+useEffect(() => {
+  console.log(owner)
+},[owner])
 
 
   return (
@@ -128,6 +132,7 @@ async function calcAll() {
       </div>
       <Input value={input} onChange={handleChange} /> 
       <MyButton className="myButton" onCalculate={calcAll} isValid={input.length >= 3 && input.length <= 8}/>
+      <Owner owner={owner} />
       <Result
         type="scorecard"
         isTrue={finalScore}
