@@ -17,14 +17,14 @@ import "./App.css";
 export default function App() {
   const rotArr = [0, 1, 6, 8, 9];
   const perArr = [0, 6, 8, 9];
+  const [isActive, setIsActive] = useState(false);
   const [input, setInput] = useState("");
-  const [owner, setOwner] = useState("");
+  const [owner, setOwner] = useState(null);
   const [finalScore, setFinalScore] = useState(0);
   const [typeScore, setTypeScore] = useState(0);
   const [typeList, setTypeList] = useState("");
   const [typePop, setTypePop] = useState("");
   const [result, setResult] = useState({
-   // owner: undefined,
     length: 0,
     palindrome: false,
     ambigram: false,
@@ -43,6 +43,11 @@ export default function App() {
        setInput(newInput);
   };
   
+  const handleEnterPress = (event) => {
+    if(event.key === 'Enter') {
+      calcAll();
+    }
+  }
 
   const calculateScore = (result) => {
     let objCall = "";
@@ -86,9 +91,7 @@ export default function App() {
 
   const calculateResults = async () => {
     const num = Number(input);
-   // const owner = await findEnsOwner(input);
     setResult({
-      //owner: owner,
       length: input.length,
       palindrome: DRM.Palindrome(input),
       ambigram: DRM.RotationChecker(input, rotArr, DRM.AmbHelper),
@@ -111,15 +114,18 @@ useEffect(() => {
 
 
 async function calcAll() {
-  calculateResults()
+  setIsActive(true);
+  setOwner("loading...");
+  calculateResults();
   await findEnsOwner(input).then(owner => {
     setOwner(owner)
-  })
+  });
 }
 
 useEffect(() => {
   console.log(owner)
 },[owner])
+
 
 
   return (
@@ -130,9 +136,11 @@ useEffect(() => {
         <h3 className="enter">Enter Your Digit</h3>
         <h3 className="version">V.2</h3>
       </div>
-      <Input value={input} onChange={handleChange} /> 
-      <MyButton className="myButton" onCalculate={calcAll} isValid={input.length >= 3 && input.length <= 8}/>
-      <Owner owner={owner} />
+      <div onKeyDown={handleEnterPress}>
+        <Input value={input} onChange={handleChange} /> 
+        <MyButton className="myButton" onCalculate={calcAll} isValid={input.length >= 3 && input.length <= 8}/>
+        <Owner owner={owner} active={isActive} />
+      </div>
       <Result
         type="scorecard"
         isTrue={finalScore}
