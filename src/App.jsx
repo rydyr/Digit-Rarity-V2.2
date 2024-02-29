@@ -40,11 +40,13 @@ export default function App() {
   });
 
   const handleChange = (newInput) => {
-       setInput(newInput);
+    if(/^\d*$/.test(newInput)){
+      setInput(newInput);
+    }
   };
   
   const handleEnterPress = (event) => {
-    if(event.key === 'Enter') {
+    if(event.key === 'Enter' && input.length >= 3 && input.length <= 8) {
       calcAll();
     }
   }
@@ -138,8 +140,8 @@ useEffect(() => {
       </div>
       <div onKeyDown={handleEnterPress}>
         <Input value={input} onChange={handleChange} /> 
-        <MyButton className="myButton" onCalculate={calcAll} isValid={input.length >= 3 && input.length <= 8}/>
-        <Owner owner={owner} active={isActive} />
+        <MyButton className="myButton" onCalculate={calcAll} isValid={/^\d+$/.test(input) && input.length >= 3 && input.length <= 8}/>
+        <Owner owner={owner} active={isActive} name={input} />
       </div>
       <Result
         type="scorecard"

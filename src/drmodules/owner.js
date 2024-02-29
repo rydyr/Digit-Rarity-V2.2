@@ -6,7 +6,7 @@ export default async function findEnsOwner(input){
         const hexAddress = await resolveEnsAddress(input);
         if(!hexAddress) {
             console.log('No Address found');
-            return null;
+            return "No Controller Set";
         }
         const resolvedName = await resolveEnsName(hexAddress);
         if(resolvedName){
